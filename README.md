@@ -2,7 +2,7 @@
 
 **A Modular 2D Grid-Based Algorithm Simulation Framework**
 
-AlgoSim-- is a project designed to visually demonstrate the working principles of diverse computational algorithms—from classical pathfinding to adaptive AI-driven optimization.
+AlgoSim-- is a project designed to visually demonstrate the working principles of diverse computational algorithms from classical pathfinding to adaptive AI-driven optimization.
 
 The system represents algorithms in a dynamic **2D grid world**, where each cell functions as a discrete computational unit or environmental element. Algorithms operate on this grid in real-time, visualizing intermediate states such as exploration, frontier expansion, learning, and convergence step-by-step. This transforms abstract algorithmic processes into intuitive, observable behaviors.
 
