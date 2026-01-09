@@ -22,10 +22,10 @@ public:
     static bool ProcessMessages();
     static void Resize(int w, int h);
 
-    static void Clear(int color);
-    static void DrawPixel(int x, int y, int color);
-    static void DrawRect(int x, int y, int w, int h, int color);
-    static void DrawLine(int x0, int y0, int x1, int y1, int color);
+    static void Clear(uint32 color);
+    static void DrawPixel(int x, int y, uint32 color);
+    static void DrawRect(int x, int y, int w, int h, uint32 color);
+    static void DrawLine(int x0, int y0, int x1, int y1, uint32 color);
     static void Present();
 
     static int GetWidth() { return width; }

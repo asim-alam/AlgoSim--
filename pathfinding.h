@@ -1,0 +1,33 @@
+#ifndef PATHFINDING_H
+#define PATHFINDING_H
+
+#include "Algorithm.h"
+#include "Core.h"
+#include "Grid.h"
+
+struct NodeRecord
+{
+    Node *node;
+    float cost; // f-score for A*, distance for Dijkstra
+
+    bool operator<(const NodeRecord &other) const
+    {
+        return cost < other.cost;
+    }
+    bool operator>(const NodeRecord &other) const
+    {
+        return cost > other.cost;
+    }
+};
+
+class Dijkstra : public Algorithm
+{
+private:
+    PriorityQueue<NodeRecord> pq;
+
+public:
+    void Init(Grid *g) override;
+    bool Step() override;
+    const char *GetName() override { return "Dijkstra's Algorithm"; }
+};
+#endif

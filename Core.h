@@ -1,19 +1,19 @@
 #ifndef CORE_H
 #define CORE_H
 
-typedef unsigned int unit32;
+typedef unsigned int uint32;
 typedef int int32;
-typedef unsigned char unit8;
+typedef unsigned char uint8;
 
 template <typename K, typename V>
 struct Pair
 {
     K first;
     V second;
-    pair()
+    Pair()
     {
     }
-    pair(K f, V s)
+    Pair(K f, V s)
     {
         first = f;
         second = s;
@@ -84,18 +84,22 @@ public:
     {
         return sizex;
     }
-    bool empty() const { return count == 0; }
-    void clear() { count = 0; }
+
+    T &operator[](int index) { return data[index]; }
+    const T &operator[](int index) const { return data[index]; }
+
+    bool empty() const { return sizex == 0; }
+    void clear() { sizex = 0; }
 
     T *begin() { return data; }
-    T *end() { return data + count; }
+    T *end() { return data + sizex; }
 };
 
 template <typename T>
 class Stack
 {
 private:
-    vector<T> vec;
+    Vector<T> vec;
 
 public:
     void push(const T &val)
@@ -107,24 +111,25 @@ public:
     {
         if (vec.empty())
         {
-            cout << "Stack is empty\n";
             return T();
         }
 
-        T value = vec.back();
+        T value = vec.get(vec.size() - 1);
         vec.pop_back();
         return value;
     }
+
     T &top()
     {
-        return vec.back();
+        return vec.get(vec.size() - 1);
     }
-    bool empty()
+
+    bool empty() const
     {
         return vec.empty();
     }
 
-    int size()
+    int size() const
     {
         return vec.size();
     }
@@ -199,11 +204,11 @@ class PriorityQueue
 private:
     Vector<T> heap;
 
-    void heapifyUp(uint32 index)
+    void heapifyUp(int index)
     {
         if (index == 0)
             return;
-        uint32 parent = (index - 1) / 2;
+        int parent = (index - 1) / 2;
         if (heap[index] < heap[parent])
         {
             T temp = heap[index];
