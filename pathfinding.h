@@ -42,4 +42,15 @@ public:
     
     float Heuristic(Node* a, Node* b);
 };
+
+class GreedyBFS : public Algorithm {
+public:
+    void Init(Grid* g) override;
+    bool Step() override;
+    const char* GetName() override { return "Greedy Best-First Search"; }
+    
+    float Heuristic(Node* a, Node* b);
+private:
+    PriorityQueue<NodeRecord> pq;
+};
 #endif
