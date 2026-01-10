@@ -30,4 +30,16 @@ public:
     bool Step() override;
     const char *GetName() override { return "Dijkstra's Algorithm"; }
 };
+
+class AStar : public Algorithm {
+private:
+    PriorityQueue<NodeRecord> pq;
+    
+public:
+    void Init(Grid* g) override;
+    bool Step() override;
+    const char* GetName() override { return "A* Search"; }
+    
+    float Heuristic(Node* a, Node* b);
+};
 #endif
