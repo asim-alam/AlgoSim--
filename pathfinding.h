@@ -53,4 +53,15 @@ public:
 private:
     PriorityQueue<NodeRecord> pq;
 };
+
+class BellmanFord : public Algorithm {
+public:
+    void Init(Grid* g) override;
+    bool Step() override;
+    const char* GetName() override { return "Bellman-Ford Algorithm"; }
+private:
+    Vector<Node*> edges; 
+    int iterations;
+    int maxIterations;
+};
 #endif
