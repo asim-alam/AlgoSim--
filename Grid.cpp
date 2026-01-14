@@ -51,6 +51,12 @@ void Grid::Draw()
             case NODE_FRONTIER:
                 color = 0xBD10E0;
                 break; // Frontier (Purple)
+            case NODE_BOOST:
+                color = 0x00FFFF;
+                break; // Boost (Cyan) - Negative Weight
+            case NODE_MUD:
+                color = 0x8B4513;
+                break; // Mud (Brown) - Positive Weight
             default:
                 break;
             }

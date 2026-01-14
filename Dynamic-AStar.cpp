@@ -129,7 +129,7 @@ bool DynamicAStar::Step()
 
     
     currentPos = nextNode;
-    if (currentPos->type != NODE_START && currentPos->type != NODE_END)
+    if (currentPos->type == NODE_EMPTY)
         currentPos->type = NODE_VISITED; 
 
     pathIndex++;

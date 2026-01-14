@@ -38,7 +38,7 @@ bool GreedyBFS::Step()
     pq.pop();
     Node *current = currentRecord.node;
 
-    if (current->type == NODE_FRONTIER)
+    if (current->type == NODE_FRONTIER || current->type == NODE_EMPTY)
         current->type = NODE_VISITED;
     if (current == grid->GetStartNode())
         current->type = NODE_START;
@@ -64,7 +64,8 @@ bool GreedyBFS::Step()
         {
             neighbor->visited = true;
             neighbor->parent = current;
-            neighbor->type = NODE_FRONTIER;
+            if (neighbor->type == NODE_EMPTY)
+                neighbor->type = NODE_FRONTIER;
             pq.push({neighbor, Heuristic(neighbor, grid->GetEndNode())});
         }
     }

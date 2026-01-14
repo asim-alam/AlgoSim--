@@ -114,6 +114,7 @@ int main()
             cout << "Selected: " << simState.currentAlgorithm->GetName() << "\n";
             cout << "Press SPACE to Start/Pause. R to Reset. C to Clear Path.\n";
             cout << "Left Click: Wall. Right Click: Clear.\n";
+            cout << "B: Boost Cell (-2 weight). M: Mud Cell (+5 weight).\n";
             cout << "S: Set Start. E: Set End.\n";
             cout << "ESC: Exit to Menu.\n";
         }
@@ -159,6 +160,22 @@ int main()
                 Node *n = grid.GetNode(gx, gy);
                 if (n)
                     grid.SetEndNode(n);
+            }
+            if (Graphics::IsKeyDown('B'))
+            {
+                Node *n = grid.GetNode(gx, gy);
+                if (n && n->type != NODE_START && n->type != NODE_END)
+                {
+                    grid.SetType(gx, gy, NODE_BOOST);
+                }
+            }
+            if (Graphics::IsKeyDown('M'))
+            {
+                Node *n = grid.GetNode(gx, gy);
+                if (n && n->type != NODE_START && n->type != NODE_END)
+                {
+                    grid.SetType(gx, gy, NODE_MUD);
+                }
             }
 
             if (Graphics::IsKeyDown(' '))

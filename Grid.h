@@ -11,7 +11,9 @@ enum NodeType
     NODE_END,
     NODE_VISITED,
     NODE_PATH,
-    NODE_FRONTIER
+    NODE_FRONTIER,
+    NODE_BOOST,
+    NODE_MUD
 };
 
 struct Node
