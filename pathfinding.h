@@ -31,37 +31,58 @@ public:
     const char *GetName() override { return "Dijkstra's Algorithm"; }
 };
 
-class AStar : public Algorithm {
+class AStar : public Algorithm
+{
 private:
     PriorityQueue<NodeRecord> pq;
-    
+
 public:
-    void Init(Grid* g) override;
+    void Init(Grid *g) override;
     bool Step() override;
-    const char* GetName() override { return "A* Search"; }
-    
-    float Heuristic(Node* a, Node* b);
+    const char *GetName() override { return "A* Search"; }
+
+    float Heuristic(Node *a, Node *b);
 };
 
-class GreedyBFS : public Algorithm {
+class GreedyBFS : public Algorithm
+{
 public:
-    void Init(Grid* g) override;
+    void Init(Grid *g) override;
     bool Step() override;
-    const char* GetName() override { return "Greedy Best-First Search"; }
-    
-    float Heuristic(Node* a, Node* b);
+    const char *GetName() override { return "Greedy Best-First Search"; }
+
+    float Heuristic(Node *a, Node *b);
+
 private:
     PriorityQueue<NodeRecord> pq;
 };
 
-class BellmanFord : public Algorithm {
+class BellmanFord : public Algorithm
+{
 public:
-    void Init(Grid* g) override;
+    void Init(Grid *g) override;
     bool Step() override;
-    const char* GetName() override { return "Bellman-Ford Algorithm"; }
+    const char *GetName() override { return "Bellman-Ford Algorithm"; }
+
 private:
-    Vector<Node*> edges; 
+    Vector<Node *> edges;
     int iterations;
     int maxIterations;
+};
+class DynamicAStar : public Algorithm
+{
+public:
+    void Init(Grid *g) override;
+    bool Step() override;
+    const char *GetName() override { return "Dynamic A* (Replanning)"; }
+
+private:
+    AStar solver;
+    Node *currentPos;
+    Node *targetPos;
+    Vector<Node *> currentPath;
+    int pathIndex;
+
+    void Replan();
 };
 #endif

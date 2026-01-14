@@ -14,6 +14,8 @@ void AStar::Init(Grid *g)
         {
             Node *n = grid->GetNode(x, y);
             n->g = 1e9f;
+            n->h = 0;
+            n->f = 0;
             n->parent = nullptr;
             n->visited = false;
         }

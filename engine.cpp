@@ -44,11 +44,11 @@ int main()
         cout << "2. Dijkstra's Algorithm\n";
         cout << "3. Greedy Best-First Search\n";
         cout << "4. Bellman-Ford Algorithm\n";
-        cout << "5. Conway's Game of Life\n";
+        cout << "5. Dynamic A* (Replanning)\n";
         cout << "6. Ant Colony Optimization\n";
         cout << "7. Q-Learning\n";
         cout << "8. Bresenham's Line Demo\n";
-        cout << "9. Dynamic A* (Replanning)\n";
+        cout << "9. Conway's Game of Life\n";
         cout << "10. Exit\n";
         cout << "Enter choice (1-10): ";
 
@@ -82,6 +82,7 @@ int main()
         Dijkstra dijkstra;
         GreedyBFS greedy;
         BellmanFord bellman;
+        DynamicAStar dynamic;
 
         // Initial setup
         grid.SetStartNode(grid.GetNode(5, 5));
@@ -101,6 +102,7 @@ int main()
             simState.currentAlgorithm = &greedy;
             break;
         case 4: simState.currentAlgorithm = &bellman; break;
+        case 5: simState.currentAlgorithm = &dynamic; break;
         default:
             cout << "Invalid choice. Defaulting to A*.\n";
             simState.currentAlgorithm = &dijkstra;
